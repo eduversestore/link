@@ -21,8 +21,8 @@
     <style>
         /* --- CSS VARIABLES --- */
         :root {
-            --bg-color: #f2f0e4; /* Warna latar belakang halaman */
-            --card-bg: #ffffff;  /* Warna kartu profil */
+            --bg-color: #f2f0e4; /* Warna latar belakang */
+            --card-bg: #ffffff;  /* Warna background utama */
             --btn-bg: #1f5f46;   /* Hijau Eduverse */
             --btn-hover: #174a36;
             --text-color: #333333;
@@ -34,40 +34,53 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--card-bg); /* Full white background */
             color: var(--text-color);
             font-family: var(--font-secondary);
             line-height: 1.5;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px 10px;
+            /* PERUBAHAN: Menghapus layout centering untuk tampilan full */
+            display: block;
+            margin: 0;
+            padding: 0;
         }
 
-        /* --- MAIN CARD CONTAINER --- */
+        /* --- MAIN CONTAINER (FULL WIDTH) --- */
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 100%; /* Full width screen */
             background-color: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            overflow: hidden;
-            padding-bottom: 40px;
+            border-radius: 0; /* Hapus sudut bulat */
+            box-shadow: none; /* Hapus bayangan */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Konten di tengah secara horizontal */
+            padding-bottom: 60px;
             position: relative;
+        }
+
+        /* --- UTILITY: CONTENT WRAPPER --- 
+           Agar tombol tidak terlalu panjang (1920px) di desktop,
+           kita batasi lebar konten intinya saja supaya tetap estetik.
+        */
+        .content-wrapper {
+            width: 100%;
+            max-width: 600px; /* Lebar optimal untuk tombol & teks */
+            padding: 0 20px;
         }
 
         /* --- TOP NAV / SHARE BUTTON --- */
         .top-nav {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 20px;
+            right: 20px;
             z-index: 20;
         }
 
         .share-btn {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.9);
             border: none;
@@ -90,36 +103,38 @@
             width: 100%;
             display: block;
             background-color: #eee;
-            line-height: 0; 
+            line-height: 0;
+            overflow: hidden;
         }
 
         .banner-img {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: contain; 
+            /* Agar di desktop banner tidak terlalu tinggi memakan layar */
+            max-height: 450px; 
+            object-fit: cover; 
+            object-position: center;
         }
 
         /* --- PROFILE SECTION --- */
         .profile-header {
             text-align: center;
             width: 100%;
-            padding: 0 20px;
-            position: relative;
-            /* PERUBAHAN UTAMA: Margin dihapus agar logo turun ke bawah banner */
+            /* Margin 0 dan Padding agar logo turun pas di bawah banner */
             margin-top: 0px; 
-            padding-top: 20px; /* Memberi jarak sedikit dari banner */
+            padding-top: 24px;
             z-index: 10;
         }
 
         .profile-img-container {
             width: 110px;
             height: 110px;
-            margin: 0 auto 10px;
+            margin: 0 auto 12px;
             border-radius: 50%;
-            padding: 4px; /* Border putih tipis */
+            padding: 4px; 
             background-color: var(--card-bg); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Shadow agar logo menonjol */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
         }
 
         .profile-img {
@@ -133,13 +148,13 @@
         .profile-title {
             font-family: var(--font-primary);
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 4px;
             color: #000;
         }
         
         .profile-handle {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #666;
             margin-bottom: 16px;
             font-weight: 600;
@@ -147,19 +162,16 @@
         }
 
         .profile-bio {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 400;
             color: #444;
-            max-width: 95%;
-            margin: 0 auto 24px;
+            margin: 0 auto 32px;
             white-space: pre-line;
             line-height: 1.6;
         }
 
         /* --- LINKS SECTION --- */
         .links-container {
-            width: 100%;
-            padding: 0 24px;
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -169,8 +181,8 @@
             text-align: center;
             font-weight: 700;
             font-size: 13px;
-            margin-top: 15px;
-            margin-bottom: 5px;
+            margin-top: 20px;
+            margin-bottom: 8px;
             color: #888;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -183,7 +195,7 @@
             justify-content: center;
             position: relative;
             width: 100%;
-            padding: 18px 20px;
+            padding: 18px 24px;
             background-color: #f9f9f9;
             color: var(--text-color);
             text-decoration: none;
@@ -191,7 +203,7 @@
             border-radius: 50px;
             transition: all 0.2s ease;
             cursor: pointer;
-            min-height: 60px;
+            min-height: 64px;
         }
 
         .link-btn:hover {
@@ -231,11 +243,11 @@
 
         /* --- FOOTER SECTION --- */
         .footer {
-            margin-top: 50px;
+            margin-top: 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #999;
         }
         
@@ -361,7 +373,7 @@
 
     <div class="container">
         
-        <!-- BANNER IMAGE -->
+        <!-- BANNER IMAGE (Full Width) -->
         <div class="banner-container">
             <img src="https://cdn.lynkid.my.id/banner/28-01-2025/file_1738061721550_9188847.png" 
                  alt="Eduverse Banner" 
@@ -382,8 +394,8 @@
             </button>
         </div>
 
-        <!-- HEADER / PROFILE -->
-        <header class="profile-header">
+        <!-- HEADER / PROFILE (Centered, Max Width) -->
+        <header class="profile-header content-wrapper">
             <div class="profile-img-container">
                 <img src="https://cdn.lynkid.my.id/profile/27-01-2025/1737969661605_8791292?width=180&quality=90" 
                      alt="Eduverse Logo" 
@@ -397,8 +409,8 @@
 WA 082229316609</p>
         </header>
 
-        <!-- LINKS -->
-        <main class="links-container">
+        <!-- LINKS (Centered, Max Width) -->
+        <main class="links-container content-wrapper">
             
             <!-- Link Utama: Lynk.id -->
             <a href="https://lynk.id/eduverse_store" target="_blank" class="link-btn highlight">
@@ -435,8 +447,8 @@ WA 082229316609</p>
             
         </main>
 
-        <!-- FOOTER -->
-        <footer class="footer">
+        <!-- FOOTER (Centered, Max Width) -->
+        <footer class="footer content-wrapper">
             <div class="footer-logo">
                 <!-- Simple text based footer or tiny logo -->
                 Eduverse Store
