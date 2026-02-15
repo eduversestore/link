@@ -39,7 +39,7 @@
             font-family: var(--font-secondary);
             line-height: 1.5;
             min-height: 100vh;
-            /* PERUBAHAN: Menghapus layout centering untuk tampilan full */
+            /* Layout Full Width */
             display: block;
             margin: 0;
             padding: 0;
@@ -50,8 +50,8 @@
             width: 100%;
             max-width: 100%; /* Full width screen */
             background-color: var(--card-bg);
-            border-radius: 0; /* Hapus sudut bulat */
-            box-shadow: none; /* Hapus bayangan */
+            border-radius: 0;
+            box-shadow: none;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -104,17 +104,18 @@
             display: block;
             background-color: #eee;
             line-height: 0;
-            overflow: hidden;
+            /* Hapus overflow hidden jika ingin memastikan tidak ada yang tersembunyi, 
+               tapi biasanya aman dibiarkan untuk struktur */
+            overflow: hidden; 
         }
 
         .banner-img {
             width: 100%;
-            height: auto;
+            height: auto; /* Biarkan tinggi menyesuaikan proporsi gambar secara alami */
             display: block;
-            /* Agar di desktop banner tidak terlalu tinggi memakan layar */
-            max-height: 450px; 
-            object-fit: cover; 
-            object-position: center;
+            /* PERBAIKAN: Menghapus max-height dan object-fit agar gambar TAMPIL UTUH (Full) */
+            /* max-height: 450px;  <- DIHAPUS */
+            /* object-fit: cover;  <- DIHAPUS */
         }
 
         /* --- PROFILE SECTION --- */
