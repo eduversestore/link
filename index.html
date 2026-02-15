@@ -21,18 +21,13 @@
     <style>
         /* --- CSS VARIABLES --- */
         :root {
-            /* Menggunakan palet warna yang earthy/islami namun modern */
-            --bg-color: #fdfcf6; /* Cream lembut */
-            --container-bg: #ffffff;
-            --btn-bg: #1f5f46; /* Hijau tua elegan */
-            --btn-text: #ffffff;
-            --btn-border: #143d2d;
+            --bg-color: #f2f0e4; /* Warna latar belakang halaman */
+            --card-bg: #ffffff;  /* Warna kartu profil */
+            --btn-bg: #1f5f46;   /* Hijau Eduverse */
+            --btn-hover: #174a36;
             --text-color: #333333;
-            --accent-color: #d4a373; /* Warna aksen gold/coklat muda */
-            
             --font-primary: 'Arvo', serif;
             --font-secondary: 'Inter', sans-serif;
-            --shadow-offset: 3px;
         }
 
         /* --- RESET & BASIC SETUP --- */
@@ -47,41 +42,42 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 20px 10px;
         }
 
+        /* --- MAIN CARD CONTAINER --- */
         .container {
             width: 100%;
-            max-width: 500px; 
-            padding: 0 0 40px 0; /* Padding bawah */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            max-width: 480px;
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            padding-bottom: 40px;
             position: relative;
-            background-color: transparent;
         }
 
         /* --- TOP NAV / SHARE BUTTON --- */
         .top-nav {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             z-index: 20;
         }
 
         .share-btn {
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0,0,0,0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: 0.2s;
-            backdrop-filter: blur(4px);
             color: var(--text-color);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
         }
 
         .share-btn:hover {
@@ -92,18 +88,16 @@
         /* --- BANNER SECTION --- */
         .banner-container {
             width: 100%;
-            height: 180px; /* Tinggi banner */
-            overflow: hidden;
-            position: relative;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
+            display: block;
+            background-color: #eee;
+            line-height: 0; 
         }
 
         .banner-img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
+            object-fit: contain; 
         }
 
         /* --- PROFILE SECTION --- */
@@ -111,18 +105,21 @@
             text-align: center;
             width: 100%;
             padding: 0 20px;
-            margin-top: -50px; /* Agar foto profil menumpuk banner */
             position: relative;
+            /* PERUBAHAN UTAMA: Margin dihapus agar logo turun ke bawah banner */
+            margin-top: 0px; 
+            padding-top: 20px; /* Memberi jarak sedikit dari banner */
             z-index: 10;
         }
 
         .profile-img-container {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 12px;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 10px;
             border-radius: 50%;
-            padding: 4px;
-            background-color: var(--bg-color); /* Border luar menyatu dengan background */
+            padding: 4px; /* Border putih tipis */
+            background-color: var(--card-bg); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Shadow agar logo menonjol */
         }
 
         .profile-img {
@@ -130,21 +127,21 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 1px solid #ddd;
+            display: block;
         }
 
         .profile-title {
             font-family: var(--font-primary);
             font-weight: 700;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 4px;
             color: #000;
         }
         
         .profile-handle {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #666;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             font-weight: 600;
             display: block;
         }
@@ -153,73 +150,73 @@
             font-size: 0.95rem;
             font-weight: 400;
             color: #444;
-            max-width: 90%;
+            max-width: 95%;
             margin: 0 auto 24px;
-            white-space: pre-line; /* Agar baris baru terbaca */
+            white-space: pre-line;
+            line-height: 1.6;
         }
 
         /* --- LINKS SECTION --- */
         .links-container {
             width: 100%;
-            padding: 0 20px;
+            padding: 0 24px;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
         }
 
         .section-header {
             text-align: center;
             font-weight: 700;
-            font-size: 14px;
-            margin-top: 10px;
+            font-size: 13px;
+            margin-top: 15px;
             margin-bottom: 5px;
-            color: #666;
+            color: #888;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         /* --- BUTTON STYLES --- */
         .link-btn {
             display: flex;
             align-items: center;
-            justify-content: center; /* Center content */
+            justify-content: center;
             position: relative;
             width: 100%;
-            padding: 16px 20px;
-            background-color: white;
+            padding: 18px 20px;
+            background-color: #f9f9f9;
             color: var(--text-color);
             text-decoration: none;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e0e0e0;
+            border-radius: 50px;
             transition: all 0.2s ease;
             cursor: pointer;
-            min-height: 58px;
+            min-height: 60px;
         }
 
-        /* Hover effect modern */
         .link-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(0,0,0,0.08);
-            border-color: var(--btn-bg);
-            color: var(--btn-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #d0d0d0;
+            background-color: white;
         }
         
-        /* Highlight Button (Untuk Link Utama/Lynk.id) */
         .link-btn.highlight {
             background-color: var(--btn-bg);
             color: white;
             border: none;
+            box-shadow: 0 4px 15px rgba(31, 95, 70, 0.3);
         }
         
         .link-btn.highlight:hover {
-            background-color: #174a36;
-            color: white;
+            background-color: var(--btn-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31, 95, 70, 0.4);
         }
 
         .btn-icon {
             position: absolute;
-            left: 20px;
+            left: 24px;
             width: 24px;
             height: 24px;
             fill: currentColor;
@@ -229,17 +226,25 @@
             font-weight: 600;
             font-size: 15px;
             text-align: center;
+            width: 100%;
         }
 
         /* --- FOOTER SECTION --- */
         .footer {
-            margin-top: 40px;
+            margin-top: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 5px;
             font-size: 0.8rem;
-            color: #888;
+            color: #999;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+            opacity: 0.7;
         }
 
         /* --- MODAL SHARE STYLES --- */
@@ -338,7 +343,7 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(31, 95, 70, 0.9);
+            background: rgba(31, 95, 70, 0.95);
             color: white;
             padding: 12px 24px;
             border-radius: 30px;
@@ -347,6 +352,7 @@
             transition: opacity 0.3s;
             pointer-events: none;
             z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         .custom-alert.show { opacity: 1; }
     </style>
@@ -360,7 +366,7 @@
             <img src="https://cdn.lynkid.my.id/banner/28-01-2025/file_1738061721550_9188847.png" 
                  alt="Eduverse Banner" 
                  class="banner-img"
-                 onerror="this.style.display='none'; document.querySelector('.banner-container').style.height='100px'; document.querySelector('.banner-container').style.backgroundColor='#1f5f46';">
+                 onerror="this.style.display='none'; document.querySelector('.banner-container').style.height='150px'; document.querySelector('.banner-container').style.backgroundColor='#1f5f46';">
         </div>
 
         <!-- TOP NAV (SHARE BUTTON) -->
@@ -431,7 +437,11 @@ WA 082229316609</p>
 
         <!-- FOOTER -->
         <footer class="footer">
-            <small>&copy; Eduverse Store</small>
+            <div class="footer-logo">
+                <!-- Simple text based footer or tiny logo -->
+                Eduverse Store
+            </div>
+            <small>&copy; 2025 All Rights Reserved</small>
         </footer>
 
         <!-- === CUSTOM SHARE MODAL === -->
@@ -512,7 +522,6 @@ WA 082229316609</p>
                 setTimeout(() => { alertBox.classList.remove('show'); }, 2000);
             })
             .catch(err => {
-                // Fallback for older browsers
                 const textArea = document.createElement("textarea");
                 textArea.value = SHARE_URL;
                 document.body.appendChild(textArea);
